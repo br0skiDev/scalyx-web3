@@ -1,0 +1,145 @@
+/* INTER FONT */
+
+@font-face {
+  font-family: "Inter";
+  src: url("../public/assets/fonts/Inter.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../public/assets/fonts/Inter.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../public/assets/fonts/Inter.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../public/assets/fonts/Inter.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../public/assets/fonts/Inter.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../public/assets/fonts/Inter.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../public/assets/fonts/Inter.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../public/assets/fonts/Inter.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../public/assets/fonts/Inter.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* PIXEL FONT */
+
+@font-face {
+  font-family: "Pixel";
+  src: url("../public/assets/fonts/Pixel.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pixel";
+  src: url("../public/assets/fonts/Pixel.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pixel";
+  src: url("../public/assets/fonts/Pixel.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pixel";
+  src: url("../public/assets/fonts/Pixel.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  font-family: "Inter", sans-serif;
+}
+
+.about-bg-dark {
+  background-image: url("../public/assets/img/dark-bg.jpeg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.about-bg-light {
+  background-image: url("../public/assets/img/light-bg.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.buyInput {
+  @apply bg-gray-300 border-[8px] border-gray-500/20 py-4 px-5 w-full text-primary font-black focus-visible:ring-0 focus-visible:outline-none;
+}
+
+.stagesImg {
+  @apply p-3 w-[100px] h-auto;
+}
+
+.speech-bubble {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  bottom: -8px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #ffffff;
+  transform: translateX(50%);
+}
