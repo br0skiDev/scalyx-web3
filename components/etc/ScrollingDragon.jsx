@@ -15,7 +15,7 @@ const ScrollingDragon = () => {
     { id: "hero", text: "BUY NOW!" },
     { id: "about", text: "🤔 SCALYX?" },
     { id: "chapter", text: "✨ 𝟱 Chapter!" },
-    { id: "roadmap", text: "Join The Community!" },
+    { id: "down", text: "Join The Community!" },
   ];
 
   // Vertikale Bewegung basierend auf Scroll-Position
@@ -85,7 +85,7 @@ const ScrollingDragon = () => {
     <motion.div style={{ x, y }} className="fixed z-30 pointer-events-none">
       <motion.div style={{ scale }} className="origin-center">
         <Image
-          src="/assets/img/dragon/gold/Erwachsener/gelb__gold__Erwachsen_-250x250.png"
+          src="/assets/img/dragon2.gif"
           width={100}
           height={100}
           alt="Flying Dragon"

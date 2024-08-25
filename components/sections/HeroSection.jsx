@@ -30,7 +30,7 @@ const HeroSection = () => {
 
   useEffect(() => {
     const checkIsDesktop = () => {
-      setIsDesktop(window.innerWidth >= 1024); // 1024px ist typischerweise die Grenze für lg in Tailwind
+      setIsDesktop(window.innerWidth >= 1024);
     };
 
     checkIsDesktop();
@@ -62,13 +62,37 @@ const HeroSection = () => {
       transition={{ duration: 0.4 }}
       className="relative w-full min-h-screen flex flex-col lg:flex-row justify-around"
     >
-      <div id="home" className="h-screen flex justify-center items-center p-4">
+      <div
+        id="home"
+        className="h-screen flex justify-center items-center p-4 z-40"
+      >
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 2.8 }}
+          className="block lg:block md:hidden absolute top-[185px] lg:top-[240px] z-20"
+        >
+          <div className="speech-bubble text-primary font-black">
+            WELCOME!{" "}
+            <span className="text-black text-sm">
+              Go to{" "}
+              <Link
+                href={"https://www.scalyx.info"}
+                target="_blank"
+                className="underline underline-offset-2 hover:text-primary"
+              >
+                info page
+              </Link>
+              !
+            </span>
+          </div>
+        </motion.div>
         <motion.div
           animate={{
             y: [0, -20, 0],
           }}
           transition={{
-            duration: 10,
+            duration: 5,
             ease: "easeInOut",
             repeat: Infinity,
             repeatType: "loop",
@@ -79,8 +103,8 @@ const HeroSection = () => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.2, delay: 1 }}
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30"
+              transition={{ duration: 0.3, delay: 2 }}
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 md:scale-[60%] lg:scale-100"
             >
               <Image src={dragonImage} width={195} height={195} alt="Dragon" />
             </motion.div>
@@ -88,9 +112,9 @@ const HeroSection = () => {
           <motion.h1
             initial={{ opacity: 0, x: 0, y: 55 }}
             animate={{ opacity: 1, x: -180, y: -120 }}
-            transition={{ duration: 0.2, delay: 0.5 }}
+            transition={{ duration: 0.3, delay: 0.5 }}
             exit={{ opacity: 0, transition: { delay: 4, duration: 1 } }}
-            className="text-5xl text-primary dark:text-foreground font-black absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 opacity-80 drop-shadow-lg"
+            className="text-5xl md:hidden lg:block lg:text-5xl text-primary dark:text-foreground font-black absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 opacity-80 drop-shadow-lg"
           >
             UNLEASH THE DRAGON
           </motion.h1>
@@ -99,7 +123,7 @@ const HeroSection = () => {
             alt="Island"
             height={400}
             width={400}
-            className="rounded-full"
+            className="rounded-full md:scale-[60%] lg:scale-100"
           />
           <div className="fixed bottom-[-95px] left-1/2 -translate-x-1/2 flex flex-col space-y-3">
             <Button
@@ -130,7 +154,7 @@ const HeroSection = () => {
           <span className="text-lg font-thin mb-1 font-pixel opacity-40">
             EXPLORE
           </span>
-          <MdKeyboardDoubleArrowDown className="text-4xl opacity-40 hover:opacity-100" />
+          <MdKeyboardDoubleArrowDown className="text-4xl opacity-40 hover:opacity-100 hover:scale-125 transition-all duration-300" />
         </Link>
       </div>
     </motion.div>

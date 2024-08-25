@@ -1,25 +1,27 @@
-import { createContext, useContext, useState } from "react";
+"use client";
+import React, { createContext, useState, useEffect } from "react";
 
 const WalletContext = createContext();
 
-export function WalletProvider({ children }) {
-  const [walletProvider, setWalletProvider] = useState("");
-  const [walletAddress, setWalletAddress] = useState(null);
+export const WalletProvider = ({ children }) => {
+  const [isWalletConnected, setIsWalletConnected] = useState(false);
+  const [walletID, setWalletID] = useState(null);
+  const [tokenBalance, setTokenBalance] = useState(0);
 
   return (
     <WalletContext.Provider
       value={{
-        walletAddress,
-        setWalletAddress,
-        walletProvider,
-        setWalletProvider,
+        isWalletConnected,
+        setIsWalletConnected,
+        walletID,
+        setWalletID,
+        tokenBalance,
+        setTokenBalance,
       }}
     >
       {children}
     </WalletContext.Provider>
   );
-}
+};
 
-export function useWallet() {
-  return useContext(WalletContext);
-}
+export default WalletContext;

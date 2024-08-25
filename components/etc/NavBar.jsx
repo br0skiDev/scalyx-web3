@@ -8,7 +8,7 @@ import HelpMark from "./HelpMark";
 
 const NavBar = () => {
   return (
-    <div className="fixed top-0 left-0 w-full h-fit flex justify-between p-2 z-50 backdrop-blur-sm md:py-6 md:pl-8 md:pr-4">
+    <div className="fixed top-0 left-0 w-full h-fit flex justify-between p-2 z-50 bg-background md:py-6 md:pl-8 md:pr-4">
       <Link href={"/"} className="flex space-x-2">
         <div>
           <Image

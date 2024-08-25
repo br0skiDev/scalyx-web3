@@ -19,7 +19,7 @@ export function DownloadWhitePaper() {
     <a href="/assets/SCALYX_WHITEPAPER.pdf" download="SCALYX_WHITEPAPER.pdf">
       <Button variant="outline" onClick={handleDownload}>
         <span>
-          <Download />
+          <Download className="w-[16px] mr-1" />
         </span>
         WHITEPAPER
       </Button>
