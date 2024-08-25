@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -24,19 +24,29 @@ const PaymentCard = () => {
     alert("Form submitted");
   };
 
-  //   Handle Input Change: ETH-Wert
+  // Handle Input Change: ETH Value
   const handleEthInputChange = (e) => {
     const value = e.target.value;
     if (value === "" || (/^\d*\.?\d*$/.test(value) && value >= 0)) {
       setEthInputValue(value);
+      if (value === "") {
+        setScalyxInputValue("");
+      } else {
+        setScalyxInputValue((value * 250).toFixed(6)); // Convert ETH to Scalyx
+      }
     }
   };
 
-  //   Handle Input Change: SCALYX-Wert
+  // Handle Input Change: Scalyx Value
   const handleScalyxInputChange = (e) => {
     const value = e.target.value;
     if (value === "" || (/^\d*\.?\d*$/.test(value) && value >= 0)) {
       setScalyxInputValue(value);
+      if (value === "") {
+        setEthInputValue("");
+      } else {
+        setEthInputValue((value / 250).toFixed(6)); // Convert Scalyx to ETH
+      }
     }
   };
 
@@ -68,7 +78,6 @@ const PaymentCard = () => {
             </label>
             <div className="relative">
               <input
-                placeholder="SCX1"
                 value={scalyxInputValue}
                 onChange={handleScalyxInputChange}
                 type="text"
@@ -89,7 +98,6 @@ const PaymentCard = () => {
             </label>
             <div className="relative">
               <input
-                placeholder="ETH"
                 value={ethInputValue}
                 onChange={handleEthInputChange}
                 type="text"
