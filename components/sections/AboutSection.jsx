@@ -8,7 +8,7 @@ const AboutSection = () => {
     <section id="about" className="w-full h-screen flex">
       <div className="flex w-full items-center justify-center py-6 px-4">
         <div className="flex flex-col w-full lg:w-1/2">
-          <h1 className="md:text-5xl text-2xl text-primary font-light font-pixel">
+          <h1 className="md:text-5xl text-2xl text-primary font-light font-pixel self-center">
             SCALYX
           </h1>
           <p className="md:text-xl text-md mt-3">
@@ -60,7 +60,7 @@ const AboutSection = () => {
                   alt="ETHEREUM"
                   width={100}
                   height={100}
-                  className="h-[60px] w-auto py-3"
+                  className="h-[60px] w-auto py-4"
                 />
               </div>
               <div className="mr-8 flex w-[220px] items-center justify-center py-2 rounded-2xl bg-gray-200/80 dark:bg-white/80 hover:bg-white dark:hover:bg-white">
