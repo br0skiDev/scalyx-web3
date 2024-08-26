@@ -9,7 +9,7 @@ const DownSection = () => {
       id="down"
       className="w-full h-fit flex flex-col bg-bottom relative"
     >
-      <div className="w-full h-fit flex px-4 py-6">
+      <div className="w-full h-fit flex items-center justify-center px-4 py-6">
         <TokenomicsPieChart />
       </div>
       <div className="w-full h-[500px] md:h-screen lg:h-[300px] flex items-end md:items-center lg:items-end pb-20 justify-center">

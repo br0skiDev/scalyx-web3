@@ -120,7 +120,7 @@ body {
 }
 
 .stagesImg {
-  @apply p-3 w-[100px] h-auto;
+  @apply p-1 w-[90px] h-auto;
 }
 
 .speech-bubble {
