@@ -8,7 +8,7 @@ const FourStages = () => {
   return (
     <section
       id="chapter"
-      className="flex flex-col w-full md:py-[200px] py-[50px]"
+      className="flex flex-col w-full md:py-[500px] py-[500px]"
     >
       {" "}
       <h1 className="self-center md:text-5xl text-2xl text-primary font-light font-pixel">
@@ -25,7 +25,7 @@ const FourStages = () => {
           />
           <p className="font-bold text-sm">SCX1</p>
         </div>
-        <TbArrowBigRightLineFilled className="text-4xl text-foreground/10" />
+        <TbArrowBigRightLineFilled className="text-2xl text-foreground/10 self-center" />
 
         <div className="flex items-center space-y-2 mt-3 flex-col">
           <Image
@@ -37,7 +37,7 @@ const FourStages = () => {
           />
           <p className="font-bold text-sm">SCX2</p>
         </div>
-        <TbArrowBigRightLineFilled className="text-4xl text-foreground/10" />
+        <TbArrowBigRightLineFilled className="text-2xl text-foreground/10 self-center" />
 
         <div className="flex items-center space-y-2 mt-3 flex-col">
           <Image
@@ -51,7 +51,7 @@ const FourStages = () => {
           />
           <p className="font-bold text-sm">SCX3</p>
         </div>
-        <TbArrowBigRightLineFilled className="text-4xl text-foreground/10" />
+        <TbArrowBigRightLineFilled className="text-2xl text-foreground/10 self-center" />
 
         <div className="flex items-center space-y-2 mt-3 flex-col">
           <Image
@@ -66,7 +66,7 @@ const FourStages = () => {
           <p className="font-bold text-sm">SCX4</p>
         </div>
 
-        <TbArrowBigRightLineFilled className="text-4xl text-foreground/10" />
+        <TbArrowBigRightLineFilled className="text-2xl text-foreground/10 self-center" />
 
         <div className="flex items-center space-y-2 mt-3 flex-col">
           <Image
@@ -81,7 +81,7 @@ const FourStages = () => {
           <p className="font-bold text-sm">NFT</p>
         </div>
       </div>
-      <p className="self-center md:pl-4 px-8 md:px-0 text-sm font-thin text-center mt-10 w-full md:w-[540px]">
+      <p className="self-center md:pl-4 px-8 md:px-0 text-sm font-thin text-center mt-6 w-full md:w-[640px]">
         Scalyx will be introduced via multiple development stages, each
         representing a key phase in a dragon&apos;s life cycle - from the small
         egg to the majestic adult dragon. As the project progresses, each stage
