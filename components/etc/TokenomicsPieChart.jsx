@@ -49,7 +49,10 @@ export const TokenomicsPieChart = () => {
     <Card className="flex flex-col h-fit w-full md:w-[450px] py-6">
       <CardHeader className="items-center pb-0">
         <CardTitle className="font-pixel text-3xl text-foreground">
-          Tokenomics
+          Tokenomics{" "}
+          <span className="font-sans font-black text-primary text-[18px]">
+            SX1
+          </span>
         </CardTitle>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
