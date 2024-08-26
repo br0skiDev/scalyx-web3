@@ -48,8 +48,8 @@ const AboutSection = () => {
                 <Image
                   src={"/assets/img/uniswap.svg"}
                   alt="UNISWAP"
-                  width={50}
-                  height={50}
+                  width={100}
+                  height={100}
                   className="h-[60px] w-auto"
                 />
               </div>
@@ -58,9 +58,9 @@ const AboutSection = () => {
                 <Image
                   src={"/assets/img/ethereum.png"}
                   alt="ETHEREUM"
-                  width={50}
-                  height={50}
-                  className="h-[60px] w-auto"
+                  width={100}
+                  height={100}
+                  className="h-[60px] w-auto py-3"
                 />
               </div>
               <div className="mr-8 flex w-[220px] items-center justify-center py-2 rounded-2xl bg-gray-200/80 dark:bg-white/80 hover:bg-white dark:hover:bg-white">
@@ -68,8 +68,8 @@ const AboutSection = () => {
                 <Image
                   src={"/assets/img/etherscan.png"}
                   alt="ETHEREUM"
-                  width={50}
-                  height={50}
+                  width={100}
+                  height={100}
                   className="h-[60px] w-auto"
                 />
               </div>
