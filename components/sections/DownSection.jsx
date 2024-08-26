@@ -7,8 +7,9 @@ const DownSection = () => {
   return (
     <section
       id="down"
-      className="w-full h-fit flex flex-col bg-bottom relative"
+      className="relative w-full h-fit flex flex-col bg-bottom"
     >
+      <div className="z-10 absolute top-0 w-full h-[40%] bg-gradient-to-b from-background"></div>
       <div className="w-full h-fit flex items-center justify-center px-4 py-6">
         <TokenomicsPieChart />
       </div>

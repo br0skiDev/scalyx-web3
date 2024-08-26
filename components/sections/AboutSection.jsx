@@ -11,7 +11,7 @@ const AboutSection = () => {
           <h1 className="md:text-5xl text-2xl text-primary font-light font-pixel self-center">
             SCALYX
           </h1>
-          <p className="md:text-xl text-md mt-3">
+          <p className="md:text-xl text-md mt-3 text-center">
             Scalyx is an innovative ERC-20 token project created by a dedicated
             small team striving to enliven the cryptocurrency market with a new
             and engaging concept. The Scalyx token series is set in a vibrant
@@ -28,8 +28,8 @@ const AboutSection = () => {
                 "/assets/img/dragon/gold/Erwachsener/gelb__gold__Erwachsen_-250x250.png"
               }
               alt="DRAGON"
-              width={80}
-              height={80}
+              width={70}
+              height={70}
             />
             <p className="text-gray-400">
               How to participate?
@@ -41,7 +41,9 @@ const AboutSection = () => {
             </p>
           </div>
 
-          <div className="mt-12 flex">
+          <div className="mt-12 flex relative overflow-hidden">
+            <div className="absolute w-[20%] left-0 top-0 h-full bg-gradient-to-r from-background z-10 pointer-events-none"></div>
+            <div className="absolute w-[20%] right-0 top-0 h-full bg-gradient-to-l from-background z-10 pointer-events-none"></div>
             <Marquee speed="60" autoFill play>
               <div className="mr-8 flex w-[220px] items-center justify-center py-2 rounded-2xl bg-gray-200/80 dark:bg-white/80 hover:bg-white dark:hover:bg-white">
                 {" "}
