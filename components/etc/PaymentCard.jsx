@@ -1,33 +1,23 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-} from "../ui/card";
+import React, { useState } from "react";
+import { Card, CardContent, CardHeader } from "../ui/card";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "../ui/button";
-import { ButtonIcon } from "@radix-ui/react-icons";
-import { FaMoneyBill } from "react-icons/fa6";
 import { Coins } from "lucide-react";
-import HelpMark from "./HelpMark";
 
 const PaymentCard = () => {
   // useState Variablen
-  const [ethInputValue, setEthInputValue] = useState(null);
-  const [scalyxInputValue, setScalyxInputValue] = useState(null);
-
-  const submitForm = () => {
-    alert("Form submitted");
-  };
+  const [ethInputValue, setEthInputValue] = useState("");
+  const [scalyxInputValue, setScalyxInputValue] = useState("");
 
   // Handle Input Change: ETH Value
   const handleEthInputChange = (e) => {
     const value = e.target.value;
-    if (value === "" || (/^\d*\.?\d*$/.test(value) && value >= 0)) {
+
+    // Regex to ensure only numbers with up to 6 decimal places are allowed
+    const regex = /^\d*\.?\d{0,6}$/;
+
+    if (value === "" || regex.test(value)) {
       setEthInputValue(value);
       if (value === "") {
         setScalyxInputValue("");
@@ -40,7 +30,11 @@ const PaymentCard = () => {
   // Handle Input Change: Scalyx Value
   const handleScalyxInputChange = (e) => {
     const value = e.target.value;
-    if (value === "" || (/^\d*\.?\d*$/.test(value) && value >= 0)) {
+
+    // Regex to ensure only numbers with up to 6 decimal places are allowed
+    const regex = /^\d*\.?\d{0,6}$/;
+
+    if (value === "" || regex.test(value)) {
       setScalyxInputValue(value);
       if (value === "") {
         setEthInputValue("");
@@ -114,10 +108,10 @@ const PaymentCard = () => {
             </div>
 
             <div className="pt-2 w-full">
-              <button class="button-82-pushable" role="button">
-                <span class="button-82-shadow"></span>
-                <span class="button-82-edge"></span>
-                <span class="button-82-front text">
+              <button className="button-82-pushable" role="button">
+                <span className="button-82-shadow"></span>
+                <span className="button-82-edge"></span>
+                <span className="button-82-front text">
                   <Coins className="w-[20px] mr-1" />
                   BUY SCALYX
                 </span>

@@ -65,6 +65,16 @@ const AboutSection = () => {
                 className="h-[60px] w-auto"
               />
             </div>
+            <div className="mr-8 flex w-[220px] items-center justify-center py-2 rounded-2xl bg-gray-200/80 dark:bg-white/80 hover:bg-white dark:hover:bg-white">
+              {" "}
+              <Image
+                src={"/assets/img/etherscan.png"}
+                alt="ETHEREUM"
+                width={50}
+                height={50}
+                className="h-[60px] w-auto"
+              />
+            </div>
           </Marquee>
         </div>
       </div>
