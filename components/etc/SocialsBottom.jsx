@@ -10,7 +10,7 @@ import {
 
 export const SocialsBottom = () => {
   return (
-    <div className="w-full flex items-center justify-center space-x-4">
+    <div className="w-full flex items-center justify-center space-x-4 bg-background py-3">
       <Link
         href={"/"}
         target="_blank"

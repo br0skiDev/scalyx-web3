@@ -4,7 +4,7 @@ import { SocialsBottom } from "../etc/SocialsBottom";
 
 const DownSection = () => {
   return (
-    <section id="down" className="w-full h-fit flex flex-col">
+    <section id="down" className="w-full h-fit flex flex-col bg-bottom">
       <div className="w-full h-fit flex px-4 py-6">
         <TokenomicsPieChart />
       </div>
