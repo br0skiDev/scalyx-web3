@@ -23,7 +23,7 @@ const SocialsBar = () => {
 
   return (
     <div className="fixed right-4 top-16 flex flex-col space-y-2 mt-2 text-3xl z-50">
-      <div className="absolute top-[-5px] right-[-5px] flex items-center text-xs">
+      <div className="absolute top-[-5px] right-[-5px] flex items-center text-xs select-none">
         Socials
       </div>
       <button

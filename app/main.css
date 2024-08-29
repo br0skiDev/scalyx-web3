@@ -120,7 +120,7 @@ body {
 }
 
 .stagesImg {
-  @apply p-1 w-[4rem] md:w-[8rem] h-auto select-none;
+  @apply p-1 w-[4rem] md:w-[8rem] h-auto select-none pointer-events-none;
 }
 
 .speech-bubble {

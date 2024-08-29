@@ -73,7 +73,7 @@ const FourStages = () => {
             src={
               "/assets/img/dragon/red/Erwachsener/rot__Erwachsen_-125x125.png"
             }
-            alt="STAGE FOUR"
+            alt="STAGE FIVE"
             width={180}
             height={180}
             className="stagesImg rounded-full blur-xl"

@@ -4,15 +4,16 @@ import { Card, CardContent, CardHeader } from "../ui/card";
 import Image from "next/image";
 import Link from "next/link";
 import { Coins } from "lucide-react";
-import { useAccount } from "wagmi";
+import { useAccount, useContractWrite } from "wagmi";
 import { useWalletInfo } from "@web3modal/wagmi/react";
+import { presaleAbi, presaleAddress } from "@/abi/presaleAbi";
 
 const PaymentCard = () => {
   // useState Variablen
   const [ethInputValue, setEthInputValue] = useState("");
   const [scalyxInputValue, setScalyxInputValue] = useState("");
   const { address, isConnecting, isDisconnected } = useAccount();
-  const [pesaleState, setPesaleState] = useState(true);
+  const [presaleState, setPresaleState] = useState(true);
   const { walletInfo } = useWalletInfo();
 
   // Handle Input Change: ETH Value
@@ -49,6 +50,28 @@ const PaymentCard = () => {
     }
   };
 
+  const handlePayment = () => {
+    if (!address) {
+      alert("Please connect your wallet");
+      return;
+    }
+
+    try {
+      const { write: buyTokens } = handlePayment({
+        address: presaleAddress,
+        abi: presaleAbi,
+        functionName: "buyTokens",
+        overrides: {
+          value: ethInputValue ? ethers.utils.parseEther(ethInputValue) : 0,
+        },
+      });
+      buyTokens();
+    } catch (error) {
+      console.error(error);
+      alert("Payment failed: " + error.message);
+    }
+  };
+
   return (
     <div className="w-full md:w-[360px] flex justify-center items-center z-40">
       <div className="p-2 border-2 border-foreground/20 rounded-2xl">
@@ -79,7 +102,7 @@ const PaymentCard = () => {
               )}
             </span>
 
-            {pesaleState && (
+            {presaleState && (
               <>
                 <h2 className="text-background dark:text-foreground text-sm font-semibold">
                   Presale has started
@@ -134,9 +157,7 @@ const PaymentCard = () => {
             <div className="pt-2 w-full">
               <button
                 className="button-82-pushable"
-                onClick={() => {
-                  console.log("Yuhuu!");
-                }}
+                onClick={handlePayment}
                 role="button"
               >
                 <span className="button-82-shadow"></span>
