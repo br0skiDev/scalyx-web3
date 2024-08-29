@@ -103,11 +103,11 @@ const PaymentCard = () => {
                 inputMode="decimal"
               />
               <Image
-                src={"/assets/img/logo/64x85.png"}
+                src={"/assets/img/logo/etc/scalyx-currency.png"}
                 alt="SCX1"
                 height={48}
                 width={48}
-                className="absolute right-[20px] top-1/2 transform -translate-y-1/2 h-[42px] w-auto"
+                className="absolute right-[9px] top-1/2 transform -translate-y-1/2 h-[42px] w-auto"
               />
             </div>
 
