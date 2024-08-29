@@ -30,18 +30,12 @@ const NavBar = () => {
       </Link>
 
       <div className="flex space-x-2">
-        {/* <w3m-button
-          size="md"
-          label="Connect Wallet"
-          loadingLabel="Connecting..."
-          disabled={false}
-          balance="show"
-        ></w3m-button> */}
         <ConnectWalletButton />
 
         <div className="flex">
           <HelpMark />
         </div>
+
         <ModeToggle />
       </div>
     </div>
