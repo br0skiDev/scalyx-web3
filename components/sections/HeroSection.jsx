@@ -66,13 +66,13 @@ const HeroSection = () => {
         id="home"
         className="h-screen flex justify-center items-center p-4 z-40 relative"
       >
-        <span className="absolute w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <Image
             src="/assets/img/etc/magic.gif"
             width={200}
             height={200}
             alt="Magic"
-            className="z-30 w-full h-auto blur-xs opacity-30"
+            className="z-30 w-full h-auto blur-xs opacity-30 md:opacity-60"
           />
         </span>
         <motion.div
