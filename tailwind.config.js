@@ -83,6 +83,10 @@ module.exports = {
       fontFamily: {
         pixel: ["Pixel", "sans-serif"],
       },
+      zIndex: {
+        9998: "9998",
+        9999: "9999",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

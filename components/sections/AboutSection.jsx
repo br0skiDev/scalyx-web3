@@ -22,20 +22,20 @@ const AboutSection = () => {
             the fantasy of the dragon lore.
           </p>
 
-          <div classname="flex">
+          <div className="flex items-center space-x-2 self-center">
             <Image
               src={
                 "/assets/img/dragon/gold/Erwachsener/gelb__gold__Erwachsen_-250x250.png"
               }
               alt="DRAGON"
-              width={70}
-              height={70}
+              width={60}
+              height={60}
             />
             <p className="text-gray-400">
               How to participate?
               <Link href={"https://www.scalyx.info/"} target="_blank">
                 <span className="hover:underline underline-offset-4 text-blue-500 ml-1">
-                  SCALYX INFO PAGE
+                  SCALYX.info
                 </span>
               </Link>
             </p>

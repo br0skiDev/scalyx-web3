@@ -1,10 +1,10 @@
 import Image from "next/image";
 import React from "react";
-import { Button } from "../ui/button";
 import Link from "next/link";
 import { ModeToggle } from "./ModeToggle";
 import { QuestionMarkCircledIcon } from "@radix-ui/react-icons";
 import HelpMark from "./HelpMark";
+import ConnectWalletButton from "./ConnectWalletButton";
 
 const NavBar = () => {
   return (
@@ -30,14 +30,15 @@ const NavBar = () => {
       </Link>
 
       <div className="flex space-x-2">
-        <div className="flex">
-          <Button
-            variant="default"
-            className="rounded-none py-4 px-6 bg-foreground/40 text-foreground dark:text-background active:text-white dark:active:text-white backdrop-blur-xl"
-          >
-            Connect Wallet
-          </Button>
-        </div>
+        {/* <w3m-button
+          size="md"
+          label="Connect Wallet"
+          loadingLabel="Connecting..."
+          disabled={false}
+          balance="show"
+        ></w3m-button> */}
+        <ConnectWalletButton />
+
         <div className="flex">
           <HelpMark />
         </div>

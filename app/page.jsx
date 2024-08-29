@@ -1,4 +1,3 @@
-import { ConnectWalletFrame } from "@/components/etc/ConnectWalletFrame";
 import ScrollingDragon from "@/components/etc/ScrollingDragon";
 import SocialsBar from "@/components/etc/SocialsBar";
 import AboutSection from "@/components/sections/AboutSection";

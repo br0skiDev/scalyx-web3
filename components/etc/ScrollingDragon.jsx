@@ -38,7 +38,7 @@ const ScrollingDragon = () => {
   const scale = useTransform(scrollY, [0, 5000], [0.45, 4]);
 
   useEffect(() => {
-    const unsubscribeY = y.onChange((latest) => {
+    const unsubscribeY = y.on("change", (latest) => {
       setDirection(latest > y.getPrevious() ? "right" : "left");
     });
 
@@ -69,7 +69,7 @@ const ScrollingDragon = () => {
       return observer;
     });
 
-    const unsubscribeScroll = scrollY.onChange((latest) => {
+    const unsubscribeScroll = scrollY.on("change", (latest) => {
       const shouldShow = latest >= aboutSectionTop && currentSection > 0;
       setShowSpeechBubble(shouldShow);
     });
@@ -86,6 +86,7 @@ const ScrollingDragon = () => {
       <motion.div style={{ scale }} className="origin-center">
         <Image
           src="/assets/img/dragon2.gif"
+          unoptimized
           width={100}
           height={100}
           alt="Flying Dragon"

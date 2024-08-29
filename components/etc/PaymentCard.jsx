@@ -4,11 +4,13 @@ import { Card, CardContent, CardHeader } from "../ui/card";
 import Image from "next/image";
 import Link from "next/link";
 import { Coins } from "lucide-react";
+import { useAccount } from "wagmi";
 
 const PaymentCard = () => {
   // useState Variablen
   const [ethInputValue, setEthInputValue] = useState("");
   const [scalyxInputValue, setScalyxInputValue] = useState("");
+  const { address, isConnected } = useAccount();
 
   // Handle Input Change: ETH Value
   const handleEthInputChange = (e) => {
@@ -22,7 +24,7 @@ const PaymentCard = () => {
       if (value === "") {
         setScalyxInputValue("");
       } else {
-        setScalyxInputValue((value * 250).toFixed(6)); // Convert ETH to Scalyx
+        setScalyxInputValue((value * 250000).toFixed(6)); // Convert ETH to Scalyx
       }
     }
   };
@@ -108,7 +110,13 @@ const PaymentCard = () => {
             </div>
 
             <div className="pt-2 w-full">
-              <button className="button-82-pushable" role="button">
+              <button
+                className="button-82-pushable"
+                onClick={() => {
+                  console.log("Manyak");
+                }}
+                role="button"
+              >
                 <span className="button-82-shadow"></span>
                 <span className="button-82-edge"></span>
                 <span className="button-82-front text">
