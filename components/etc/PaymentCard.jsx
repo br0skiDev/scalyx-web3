@@ -82,7 +82,7 @@ const PaymentCard = () => {
                 GET $SCX1 NOW!
               </h1>
               <p className="text-foreground/80 dark:text-foreground-80 text-xs">
-                Buy SX1 with ETH
+                Buy SCX1 with ETH
               </p>
             </span>
             <span className="w-full bg-background py-3 rounded-lg flex flex-col items-center justify-center">
@@ -178,6 +178,7 @@ const PaymentCard = () => {
             </p>
             <Link
               href={"https://www.scalyx.info/"}
+              target="_blank"
               className="text-xs font-semibold text-background dark:text-foreground hover:underline underline-offset-2"
             >
               INFO PAGE
