@@ -101,7 +101,7 @@ const PaymentCard = () => {
       <div className="p-2 border-2 backdrop-blur-sm border-foreground/20 rounded-2xl">
         <Card className="flex flex-col gap-4 w-fit px-1 dark:bg-slate-50/50 bg-slate-900/50 backdrop-blur-lg shadow-xl transform transition-all duration-500 rounded-b-none">
           <CardHeader className="pt-6 pb-0">
-            <span>
+            <span className="">
               <h1 className="font-bold text-2xl text-foreground">
                 GET $SCX1 NOW!
               </h1>
@@ -132,12 +132,20 @@ const PaymentCard = () => {
 
             {presaleState && (
               <>
-                <h2 className="text-background dark:text-foreground pt-2 text-sm font-bold">
-                  Presale has started
-                </h2>
-                <h2 className="text-background dark:text-foreground text-sm font-medium">
-                  ⏰ 7 days left
-                </h2>
+                <div className="flex space-x-1 text-background dark:text-foreground pt-2 text-md font-bold">
+                  <span className="font-light">Event: </span>
+                  <span>
+                    <h1>
+                      <span className="font-black">PRESALE</span> has started
+                    </h1>
+                    <h2 className="text-background dark:text-foreground text-sm font-medium">
+                      ⏰ 7 days left
+                    </h2>
+                    <button className="rounded py-[2.5px] px-[10px] text-xs font-light mt-2 border-[0.8px] border-foreground/20 active:border-foreground/80 active:bg-foreground/20">
+                      See earnings
+                    </button>
+                  </span>
+                </div>
               </>
             )}
           </CardHeader>
