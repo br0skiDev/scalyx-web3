@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import Image from "next/image";
 import Link from "next/link";
-import { Coins } from "lucide-react";
+import { Coins, Info } from "lucide-react";
 import { useAccount, useContractWrite } from "wagmi";
 import { useWalletInfo } from "@web3modal/wagmi/react";
 import { presaleAbi, presaleAddress } from "@/abi/presaleAbi";
 import { useToast } from "../ui/use-toast";
+import { TriangleDownIcon } from "@radix-ui/react-icons";
 
 const PaymentCard = () => {
   // useState Variablen
@@ -30,6 +31,13 @@ const PaymentCard = () => {
     toast({
       description:
         "To purchase Scalyx (SCX1), please enter the amount you wish to buy.",
+    });
+  };
+
+  const whichAddress = () => {
+    toast({
+      title: walletInfo.name,
+      description: address,
     });
   };
 
@@ -56,7 +64,7 @@ const PaymentCard = () => {
       if (value === "") {
         setEthInputValue("");
       } else {
-        setEthInputValue((value / 250).toFixed(6)); // Convert Scalyx to ETH
+        setEthInputValue((value / 250000).toFixed(6)); // Convert Scalyx to ETH
       }
     }
   };
@@ -90,8 +98,8 @@ const PaymentCard = () => {
 
   return (
     <div className="w-full md:w-[360px] flex justify-center items-center z-40">
-      <div className="p-2 border-2 border-foreground/20 rounded-2xl">
-        <Card className="flex flex-col gap-4 w-fit px-1 dark:bg-slate-50/50 bg-slate-900/40 backdrop-blur-lg shadow-xl transform transition-all duration-500 rounded-b-none">
+      <div className="p-2 border-2 backdrop-blur-sm border-foreground/20 rounded-2xl">
+        <Card className="flex flex-col gap-4 w-fit px-1 dark:bg-slate-50/50 bg-slate-900/50 backdrop-blur-lg shadow-xl transform transition-all duration-500 rounded-b-none">
           <CardHeader className="pt-6 pb-0">
             <span>
               <h1 className="font-bold text-2xl text-foreground">
@@ -102,13 +110,17 @@ const PaymentCard = () => {
               </p>
             </span>
 
-            <span className="w-full bg-background py-3 rounded-lg flex flex-col items-center justify-center">
+            <span className="w-full bg-black dark:bg-background py-3 rounded-lg flex flex-col items-center justify-center">
               {walletInfo && (
                 <h2 className="text-green-500 text-sm blur-[0.55px] font-light text-center py-2">
                   Wallet connected! <br />{" "}
-                  <span className="flex flex-col text-[0.68rem] mt-2 font-medium">
-                    <h1>{walletInfo.name}</h1>
-                  </span>
+                  <button
+                    onClick={whichAddress}
+                    className="cursor-pointer flex w-full items-center justify-center text-[0.68rem] mt-2 font-medium active:text-foreground"
+                  >
+                    <h1>{walletInfo.name}</h1>{" "}
+                    <Info className="ml-1 w-[12px]" />
+                  </button>
                 </h2>
               )}
               {!walletInfo && (
