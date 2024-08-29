@@ -7,6 +7,7 @@ import { Coins } from "lucide-react";
 import { useAccount, useContractWrite } from "wagmi";
 import { useWalletInfo } from "@web3modal/wagmi/react";
 import { presaleAbi, presaleAddress } from "@/abi/presaleAbi";
+import { useToast } from "../ui/use-toast";
 
 const PaymentCard = () => {
   // useState Variablen
@@ -15,14 +16,27 @@ const PaymentCard = () => {
   const { address, isConnecting, isDisconnected } = useAccount();
   const [presaleState, setPresaleState] = useState(true);
   const { walletInfo } = useWalletInfo();
+  const { toast } = useToast();
+
+  // Toasts
+  const connectWalletFirst = () => {
+    toast({
+      title: "No wallet connected",
+      description: "Please connect your wallet first.",
+    });
+  };
+
+  const typeInValueFirst = () => {
+    toast({
+      description:
+        "To purchase Scalyx (SCX1), please enter the amount you wish to buy.",
+    });
+  };
 
   // Handle Input Change: ETH Value
   const handleEthInputChange = (e) => {
     const value = e.target.value;
-
-    // Regex to ensure only numbers with up to 6 decimal places are allowed
     const regex = /^\d*\.?\d{0,6}$/;
-
     if (value === "" || regex.test(value)) {
       setEthInputValue(value);
       if (value === "") {
@@ -36,10 +50,7 @@ const PaymentCard = () => {
   // Handle Input Change: Scalyx Value
   const handleScalyxInputChange = (e) => {
     const value = e.target.value;
-
-    // Regex to ensure only numbers with up to 6 decimal places are allowed
     const regex = /^\d*\.?\d{0,6}$/;
-
     if (value === "" || regex.test(value)) {
       setScalyxInputValue(value);
       if (value === "") {
@@ -52,7 +63,12 @@ const PaymentCard = () => {
 
   const handlePayment = () => {
     if (!address) {
-      alert("Please connect your wallet");
+      connectWalletFirst();
+      return;
+    }
+
+    if (address && !scalyxInputValue) {
+      typeInValueFirst();
       return;
     }
 
@@ -75,7 +91,7 @@ const PaymentCard = () => {
   return (
     <div className="w-full md:w-[360px] flex justify-center items-center z-40">
       <div className="p-2 border-2 border-foreground/20 rounded-2xl">
-        <Card className="flex flex-col gap-4 w-fit dark:bg-slate-50/50 bg-slate-900/40 backdrop-blur-lg shadow-xl transform transition-all duration-500 rounded-b-none">
+        <Card className="flex flex-col gap-4 w-fit px-1 dark:bg-slate-50/50 bg-slate-900/40 backdrop-blur-lg shadow-xl transform transition-all duration-500 rounded-b-none">
           <CardHeader className="pt-6 pb-0">
             <span>
               <h1 className="font-bold text-2xl text-foreground">
