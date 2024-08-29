@@ -62,10 +62,19 @@ const HeroSection = () => {
       transition={{ duration: 0.4 }}
       className="relative w-full min-h-screen flex flex-col lg:flex-row justify-around"
     >
-      <div
+      <section
         id="home"
-        className="h-screen flex justify-center items-center p-4 z-40"
+        className="h-screen flex justify-center items-center p-4 z-40 relative"
       >
+        <span className="absolute w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <Image
+            src="/assets/img/etc/magic.gif"
+            width={200}
+            height={200}
+            alt="Magic"
+            className="z-30 w-full h-auto blur-xs opacity-30"
+          />
+        </span>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -139,7 +148,7 @@ const HeroSection = () => {
             */}
           </div>
         </motion.div>
-      </div>
+      </section>
 
       <div
         id="buy"
