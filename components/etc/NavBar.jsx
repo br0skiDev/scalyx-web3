@@ -23,7 +23,7 @@ const NavBar = () => {
           <h1 className="text-xl md:text-3xl font-black tracking-tight">
             SCALYX
           </h1>
-          <h2 className="text-[6pt] md:text-[7.8pt] md:text-md font-extralight text-primary">
+          <h2 className="text-[6pt] md:text-[7.8pt] md:text-md font-medium text-primary">
             UNLEASH THE DRAGON
           </h2>
         </div>
