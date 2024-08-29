@@ -85,18 +85,18 @@ const PaymentCard = () => {
                 Buy SCX1 with ETH
               </p>
             </span>
+
             <span className="w-full bg-background py-3 rounded-lg flex flex-col items-center justify-center">
               {walletInfo && (
-                <h2 className="text-foreground dark:text-green-500 text-sm font-light text-center py-2">
+                <h2 className="text-green-500 text-sm font-light text-center py-2">
                   Wallet connected! <br />{" "}
                   <span className="flex flex-col text-[0.68rem] mt-2 font-medium">
                     <h1>{walletInfo.name}</h1>
-                    <h1 className="text-[0.4rem]">{address}</h1>
                   </span>
                 </h2>
               )}
               {!walletInfo && (
-                <h2 className="text-foreground dark:text-green-500 text-sm font-medium text-center py-2">
+                <h2 className="text-primary text-sm font-medium text-center py-2">
                   No wallet connected!
                 </h2>
               )}

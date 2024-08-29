@@ -36,7 +36,7 @@ const HelpBox = ({ closeHelp }) => {
         >
           close
         </button>
-        <h1 className="text-md tracking-wider font-bold mb-2 font-pixel dark:text-background self-start text-xl">
+        <h1 className="text-md tracking-wider font-bold mb-2 dark:text-background self-start text-xl">
           How to get connected?
         </h1>
         <p className="mb-4 text-[7.4pt] dark:text-background font-light">

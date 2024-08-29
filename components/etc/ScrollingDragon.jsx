@@ -85,7 +85,7 @@ const ScrollingDragon = () => {
     <motion.div style={{ x, y }} className="fixed z-30 pointer-events-none">
       <motion.div style={{ scale }} className="origin-center">
         <Image
-          src="/assets/img/dragon2-green.gif"
+          src="/assets/img/dragon2.gif"
           unoptimized
           width={100}
           height={100}
