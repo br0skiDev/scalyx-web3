@@ -10,7 +10,7 @@ import {
 
 export const SocialsBottom = () => {
   return (
-    <div className="w-full flex items-center justify-center flex-col bg-background py-3 mx-4 rounded-3xl">
+    <div className="w-fit flex items-center justify-center flex-col bg-background py-8 px-16 rounded space-y-4">
       <h1 className="font-black">SOCIALS</h1>
       <div className="space-x-4 flex items-center justify-center">
         <Link

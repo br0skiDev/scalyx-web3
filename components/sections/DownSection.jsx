@@ -7,13 +7,13 @@ const DownSection = () => {
   return (
     <section
       id="down"
-      className="relative w-full h-fit flex flex-col bg-bottom"
+      className="relative w-full h-fit py-20 flex flex-col bg-bottom"
     >
-      <div className="z-10 absolute top-0 w-full h-[40%] bg-gradient-to-b from-background"></div>
-      <div className="w-full h-fit flex items-center justify-center px-4 py-6">
+      <div className="z-10 absolute top-0 w-full h-[80%] bg-gradient-to-b from-background"></div>
+      <div className="w-full pt-10 mb-6 h-fit flex items-center justify-center px-4">
         <TokenomicsPieChart />
       </div>
-      <div className="w-full h-[500px] md:h-screen lg:h-[300px] flex items-end md:items-center lg:items-end pb-20 justify-center">
+      <div className="w-full flex items-end md:items-center lg:items-end justify-center">
         <SocialsBottom />
       </div>
 
