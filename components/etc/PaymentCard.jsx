@@ -5,12 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { Coins } from "lucide-react";
 import { useAccount } from "wagmi";
+import { useWalletInfo } from "@web3modal/wagmi/react";
 
 const PaymentCard = () => {
   // useState Variablen
   const [ethInputValue, setEthInputValue] = useState("");
   const [scalyxInputValue, setScalyxInputValue] = useState("");
-  const { address, isConnected } = useAccount();
+  const { address, isConnecting, isDisconnected } = useAccount();
+  const [pesaleState, setPesaleState] = useState(true);
+  const { walletInfo } = useWalletInfo();
 
   // Handle Input Change: ETH Value
   const handleEthInputChange = (e) => {
@@ -60,13 +63,35 @@ const PaymentCard = () => {
               </p>
             </span>
             <span className="w-full bg-background py-3 rounded-lg flex flex-col items-center justify-center">
-              <h2 className="text-primary dark:text-green-500 text-sm font-semibold">
-                Presale has started
-              </h2>
-              <h2 className="text-primary dark:text-green-500 text-sm font-light">
-                No wallet connected!
-              </h2>
+              {walletInfo && (
+                <h2 className="text-primary dark:text-green-500 text-sm font-light text-center py-2">
+                  Wallet connected! <br />{" "}
+                  <span className="flex flex-col text-[0.68rem] mt-2 font-medium">
+                    <h1>{walletInfo.name}</h1>
+                    <h1 className="text-[0.4rem]">{address}</h1>
+                  </span>
+                </h2>
+              )}
+              {!walletInfo && (
+                <h2 className="text-primary dark:text-green-500 text-sm font-light text-center py-2">
+                  No wallet connected! <br />{" "}
+                  <span className="text-[0.68rem] font-medium">
+                    Please connect your wallet.
+                  </span>
+                </h2>
+              )}
             </span>
+
+            {pesaleState && (
+              <>
+                <h2 className="text-primary dark:text-foreground text-sm font-semibold">
+                  Presale has started
+                </h2>
+                <h2 className="text-primary dark:text-foreground text-sm font-semibold">
+                  ⏰ 7 days left
+                </h2>
+              </>
+            )}
           </CardHeader>
           <CardContent className="flex flex-col space-y-2">
             <label className="text-sm text-background dark:text-foreground font-bold opacity-50 select-none">
@@ -113,7 +138,7 @@ const PaymentCard = () => {
               <button
                 className="button-82-pushable"
                 onClick={() => {
-                  console.log("Manyak");
+                  console.log("Yuhuu!");
                 }}
                 role="button"
               >

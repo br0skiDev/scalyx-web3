@@ -126,7 +126,7 @@ const HeroSection = () => {
             className="rounded-full md:scale-[60%] lg:scale-100"
           />
           <div className="fixed bottom-[-95px] left-1/2 -translate-x-1/2 flex flex-col space-y-3">
-            <Button
+            {/* <Button
               onClick={() => {
                 router.push("#buy");
               }}
@@ -136,6 +136,7 @@ const HeroSection = () => {
               BUY NOW
             </Button>
             <DownloadWhitePaper />
+            */}
           </div>
         </motion.div>
       </div>

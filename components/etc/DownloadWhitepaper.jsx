@@ -16,7 +16,11 @@ export function DownloadWhitePaper() {
   };
 
   return (
-    <a href="/assets/SCALYX_WHITEPAPER.pdf" download="SCALYX_WHITEPAPER.pdf">
+    <a
+      href="/assets/SCALYX_WHITEPAPER.pdf"
+      download="SCALYX_WHITEPAPER.pdf"
+      className="self-center py-6"
+    >
       <Button variant="outline" onClick={handleDownload}>
         <span>
           <Download className="w-[16px] mr-1" />

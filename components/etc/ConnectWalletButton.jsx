@@ -19,6 +19,7 @@ const ConnectWalletButton = () => {
       {!walletInfo && (
         <Button
           variant="default"
+          className="rounded-full px-4"
           onClick={() => {
             open();
           }}

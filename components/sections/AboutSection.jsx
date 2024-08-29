@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Marquee from "react-fast-marquee";
+import { DownloadWhitePaper } from "../etc/DownloadWhitepaper";
 
 const AboutSection = () => {
   return (
@@ -21,6 +22,8 @@ const AboutSection = () => {
             an immersive experience that blends real life digital assets with
             the fantasy of the dragon lore.
           </p>
+
+          <DownloadWhitePaper />
 
           <div className="flex items-center space-x-2 self-center">
             <Image
