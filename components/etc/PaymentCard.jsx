@@ -104,7 +104,7 @@ const PaymentCard = () => {
 
             <span className="w-full bg-background py-3 rounded-lg flex flex-col items-center justify-center">
               {walletInfo && (
-                <h2 className="text-green-500 text-sm font-light text-center py-2">
+                <h2 className="text-green-500 text-sm blur-[0.55px] font-light text-center py-2">
                   Wallet connected! <br />{" "}
                   <span className="flex flex-col text-[0.68rem] mt-2 font-medium">
                     <h1>{walletInfo.name}</h1>
@@ -112,7 +112,7 @@ const PaymentCard = () => {
                 </h2>
               )}
               {!walletInfo && (
-                <h2 className="text-primary text-sm font-medium text-center py-2">
+                <h2 className="text-primary blur-[0.55px] text-sm font-medium text-center py-2">
                   No wallet connected!
                 </h2>
               )}
@@ -120,10 +120,10 @@ const PaymentCard = () => {
 
             {presaleState && (
               <>
-                <h2 className="text-background dark:text-foreground text-sm font-semibold">
+                <h2 className="text-background dark:text-foreground pt-2 text-sm font-bold">
                   Presale has started
                 </h2>
-                <h2 className="text-background dark:text-foreground text-sm font-semibold">
+                <h2 className="text-background dark:text-foreground text-sm font-medium">
                   ⏰ 7 days left
                 </h2>
               </>
