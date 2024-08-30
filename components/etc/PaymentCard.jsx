@@ -1,23 +1,36 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import Image from "next/image";
 import Link from "next/link";
-import { Coins, Info } from "lucide-react";
-import { useAccount, useContractWrite } from "wagmi";
+import {
+  ArrowDown10,
+  ArrowDownCircle,
+  ArrowDownFromLineIcon,
+  ArrowRightCircle,
+  Coins,
+  Info,
+} from "lucide-react";
+import {
+  useAccount,
+  useWriteContract,
+  useWaitForTransactionReceipt,
+} from "wagmi";
 import { useWalletInfo } from "@web3modal/wagmi/react";
 import { presaleAbi, presaleAddress } from "@/abi/presaleAbi";
 import { useToast } from "../ui/use-toast";
 import { TriangleDownIcon } from "@radix-ui/react-icons";
+import { parseEther } from "viem";
 
 const PaymentCard = () => {
-  // useState Variablen
   const [ethInputValue, setEthInputValue] = useState("");
   const [scalyxInputValue, setScalyxInputValue] = useState("");
   const { address, isConnecting, isDisconnected } = useAccount();
   const [presaleState, setPresaleState] = useState(true);
   const { walletInfo } = useWalletInfo();
   const { toast } = useToast();
+
+  const abi = presaleAbi.abi;
 
   // Toasts
   const connectWalletFirst = () => {
@@ -69,31 +82,62 @@ const PaymentCard = () => {
     }
   };
 
+  const { data: hash, error, isPending, writeContract } = useWriteContract();
+
+  const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({
+    hash,
+  });
+
+  useEffect(() => {
+    console.log("Write Error:", error);
+    console.log("Is Write Available:", Boolean(writeContract));
+    console.log("Wallet Address:", address);
+    console.log("ETH Input Value:", ethInputValue);
+    console.log("ABI:", abi);
+  }, [error, writeContract, address, ethInputValue, abi]);
+
+  const buyTokens = async () => {
+    if (!writeContract) {
+      console.error("Write function is not available");
+      toast({
+        title: "Error",
+        description:
+          "Transaction cannot be initiated. Please check your wallet connection and input values.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      await writeContract({
+        address: presaleAddress,
+        abi: abi,
+        functionName: "buyTokens",
+        args: [],
+        value: ethInputValue ? parseEther(ethInputValue) : undefined,
+      });
+    } catch (error) {
+      console.error("Error buying tokens:", error);
+      toast({
+        title: "Error",
+        description: `Failed to buy tokens: ${error.message}`,
+        variant: "destructive",
+      });
+    }
+  };
+
   const handlePayment = () => {
     if (!address) {
       connectWalletFirst();
       return;
     }
 
-    if (address && !scalyxInputValue) {
+    if (!ethInputValue || ethInputValue === "0") {
       typeInValueFirst();
       return;
     }
 
-    try {
-      const { write: buyTokens } = handlePayment({
-        address: presaleAddress,
-        abi: presaleAbi,
-        functionName: "buyTokens",
-        overrides: {
-          value: ethInputValue ? ethers.utils.parseEther(ethInputValue) : 0,
-        },
-      });
-      buyTokens();
-    } catch (error) {
-      console.error(error);
-      alert("Payment failed: " + error.message);
-    }
+    buyTokens();
   };
 
   return (
@@ -118,8 +162,8 @@ const PaymentCard = () => {
                     onClick={whichAddress}
                     className="cursor-pointer flex w-full items-center justify-center text-[0.68rem] mt-2 font-medium active:text-foreground"
                   >
+                    <ArrowRightCircle className="mr-1 w-[12px]" />
                     <h1>{walletInfo.name}</h1>{" "}
-                    <Info className="ml-1 w-[12px]" />
                   </button>
                 </h2>
               )}
