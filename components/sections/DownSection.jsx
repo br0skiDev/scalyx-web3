@@ -13,7 +13,7 @@ const DownSection = () => {
       <div className="w-full pt-10 mb-6 h-fit flex items-center justify-center px-4">
         <TokenomicsPieChart />
       </div>
-      <div className="w-full flex items-end md:items-center lg:items-end justify-center">
+      <div className="w-full flex items-end md:items-center lg:items-end justify-center z-20">
         <SocialsBottom />
       </div>
 

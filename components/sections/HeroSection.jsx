@@ -72,7 +72,7 @@ const HeroSection = () => {
             width={200}
             height={200}
             alt="Magic"
-            className="z-30 w-full h-auto blur-xs opacity-30 md:opacity-60"
+            className="z-30 w-full scale-[200%] md:scale-125 lg:scale-[200%] h-auto blur-xs opacity-30 md:opacity-60"
           />
         </span>
         <motion.div
