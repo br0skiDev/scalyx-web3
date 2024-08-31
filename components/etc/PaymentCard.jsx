@@ -182,14 +182,6 @@ const PaymentCard = () => {
     hash,
   });
 
-  useEffect(() => {
-    console.log("Write Error:", error);
-    console.log("Is Write Available:", Boolean(writeContract));
-    console.log("Wallet Address:", address);
-    console.log("ETH Input Value:", ethInputValue);
-    console.log("ABI:", abi);
-  }, [error, writeContract, address, ethInputValue, abi]);
-
   const buyTokens = async () => {
     if (!writeContract) {
       console.error("Write function is not available");
