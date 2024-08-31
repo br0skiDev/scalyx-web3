@@ -17,7 +17,7 @@ const DownSection = () => {
         <SocialsBottom />
       </div>
 
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-10 bg-background flex items-center justify-center space-x-4 py-3">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-10 bg-background flex items-center justify-center space-x-4 py-3 rounded-xl">
         <Link href={"/"} className="font-bold hover:scale-110">
           Terms
         </Link>

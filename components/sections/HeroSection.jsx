@@ -81,18 +81,8 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 2.8 }}
           className="block lg:block md:hidden absolute top-[185px] lg:top-[240px] z-20"
         >
-          <div className="speech-bubble text-primary font-black">
-            WELCOME!{" "}
-            <span className="text-black text-sm">
-              Explore{" "}
-              <Link
-                href={"#about"}
-                className="underline underline-offset-2 hover:text-primary"
-              >
-                SCALYX
-              </Link>
-              !
-            </span>
+          <div className="speech-bubble text-foreground dark:text-primary font-black">
+            WELCOME TO SCALYX!{" "}
           </div>
         </motion.div>
         <motion.div

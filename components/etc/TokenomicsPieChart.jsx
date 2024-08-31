@@ -46,7 +46,7 @@ const chartConfig = {
 
 export const TokenomicsPieChart = () => {
   return (
-    <Card className="flex flex-col h-fit w-full md:w-[450px] py-6 z-20 rpnded-xl">
+    <Card className="flex flex-col h-fit w-full md:w-[500px] py-6 z-20 rpnded-xl">
       <CardHeader className="items-center pb-0">
         <CardTitle className="font-pixel text-3xl text-foreground">
           Tokenomics{" "}
