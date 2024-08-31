@@ -84,13 +84,12 @@ const HeroSection = () => {
           <div className="speech-bubble text-primary font-black">
             WELCOME!{" "}
             <span className="text-black text-sm">
-              Go to{" "}
+              Explore{" "}
               <Link
-                href={"https://www.scalyx.info"}
-                target="_blank"
+                href={"#about"}
                 className="underline underline-offset-2 hover:text-primary"
               >
-                info page
+                SCALYX
               </Link>
               !
             </span>
