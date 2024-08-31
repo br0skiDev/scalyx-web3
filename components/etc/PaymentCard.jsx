@@ -15,20 +15,24 @@ import {
   useAccount,
   useWriteContract,
   useWaitForTransactionReceipt,
+  useReadContract,
+  useBalance,
 } from "wagmi";
 import { useWalletInfo } from "@web3modal/wagmi/react";
 import { presaleAbi, presaleAddress } from "@/abi/presaleAbi";
 import { useToast } from "../ui/use-toast";
 import { TriangleDownIcon } from "@radix-ui/react-icons";
-import { parseEther } from "viem";
+import { formatEther, parseEther } from "viem";
 
 const PaymentCard = () => {
+  const { walletInfo } = useWalletInfo();
   const [ethInputValue, setEthInputValue] = useState("");
   const [scalyxInputValue, setScalyxInputValue] = useState("");
   const { address, isConnecting, isDisconnected } = useAccount();
   const [presaleState, setPresaleState] = useState(true);
-  const { walletInfo } = useWalletInfo();
   const { toast } = useToast();
+  const [remainingTime, setRemainingTime] = useState("");
+  const [presaleBalance, setPresaleBalance] = useState("");
 
   const abi = presaleAbi.abi;
 
@@ -82,8 +86,53 @@ const PaymentCard = () => {
     }
   };
 
-  const { data: hash, error, isPending, writeContract } = useWriteContract();
+  // Presale Timer
+  const { data: endTime } = useReadContract({
+    address: presaleAddress,
+    abi: abi,
+    functionName: "endTime",
+  });
 
+  useEffect(() => {
+    if (endTime) {
+      const updateRemainingTime = () => {
+        const now = Math.floor(Date.now() / 1000);
+        const timeLeft = Number(endTime) - now;
+        if (timeLeft <= 0) {
+          setRemainingTime("Presale ended");
+          setPresaleState(false);
+        } else {
+          const days = Math.floor(timeLeft / (24 * 60 * 60));
+          const hours = Math.floor((timeLeft % (24 * 60 * 60)) / (60 * 60));
+          const minutes = Math.floor((timeLeft % (60 * 60)) / 60);
+          setRemainingTime(`${days}d ${hours}h ${minutes}m left`);
+        }
+      };
+
+      updateRemainingTime();
+      const timer = setInterval(updateRemainingTime, 60000); // Update every minute
+
+      return () => clearInterval(timer);
+    }
+  }, [endTime]);
+
+  // Get Balance
+  const { data: presaletBalanceData } = useBalance({
+    address: presaleAddress,
+  });
+
+  const seeBalance = () => {
+    if (presaletBalanceData) {
+      const balanceInEth = formatEther(presaletBalanceData.value);
+      setPresaleBalance(balanceInEth);
+      alert(`Contract Balance: ${balanceInEth} ETH`);
+    } else {
+      console.log("Unable to fetch presale balance");
+    }
+  };
+
+  // Buy Tokens
+  const { data: hash, error, isPending, writeContract } = useWriteContract();
   const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({
     hash,
   });
@@ -183,10 +232,13 @@ const PaymentCard = () => {
                       <span className="font-black">PRESALE</span> has started
                     </h1>
                     <h2 className="text-background dark:text-foreground text-sm font-medium">
-                      ⏰ 7 days left
+                      ⏰ {remainingTime}
                     </h2>
-                    <button className="rounded py-[2.5px] px-[10px] text-xs font-light mt-2 border-[0.8px] border-foreground/20 active:border-foreground/80 active:bg-foreground/20">
-                      See earnings
+                    <button
+                      onClick={seeBalance}
+                      className="rounded py-[2.5px] px-[10px] text-xs font-light mt-2 border-[0.8px] border-foreground/20 active:border-foreground/80 active:bg-foreground/20"
+                    >
+                      See balance
                     </button>
                   </span>
                 </div>
