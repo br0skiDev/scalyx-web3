@@ -87,7 +87,12 @@ const PaymentCard = () => {
   };
 
   // Presale Timer
-  const { data: endTime, refetch: refetchEndTime } = useReadContract({
+  const {
+    data: endTime,
+    refetch: refetchEndTime,
+    isError: isEndTimeError,
+    error: endTimeError,
+  } = useReadContract({
     address: presaleAddress,
     abi: abi,
     functionName: "endTime",
@@ -97,7 +102,13 @@ const PaymentCard = () => {
     const updateRemainingTime = async () => {
       try {
         // Refetch endTime to get the most up-to-date data
-        const { data: updatedEndTime } = await refetchEndTime();
+        const { data: updatedEndTime, isError, error } = await refetchEndTime();
+
+        if (isError) {
+          console.error("Error fetching end time:", error);
+          setRemainingTime("Error fetching end time");
+          return;
+        }
 
         if (updatedEndTime) {
           const now = Math.floor(Date.now() / 1000);
@@ -113,20 +124,37 @@ const PaymentCard = () => {
             setRemainingTime(`${days}d ${hours}h ${minutes}m left`);
           }
         } else {
-          console.error("Unable to fetch end time");
-          setRemainingTime("Unable to fetch remaining time");
+          console.warn("End time is undefined");
+          setRemainingTime("Unable to determine remaining time");
         }
       } catch (error) {
-        console.error("Error updating remaining time:", error);
+        console.error("Unexpected error updating remaining time:", error);
         setRemainingTime("Error updating time");
       }
     };
 
+    // Initial update
     updateRemainingTime();
-    const timer = setInterval(updateRemainingTime, 60000); // Update every minute
 
-    return () => clearInterval(timer);
-  }, [refetchEndTime]);
+    // Set up interval only if we successfully fetched the end time
+    let timer;
+    if (endTime) {
+      timer = setInterval(updateRemainingTime, 60000); // Update every minute
+    } else {
+      console.warn("Initial end time fetch failed, not setting up interval");
+    }
+
+    return () => {
+      if (timer) clearInterval(timer);
+    };
+  }, [refetchEndTime, endTime]);
+
+  // Additional useEffect for logging
+  useEffect(() => {
+    if (isEndTimeError) {
+      console.error("Error in useReadContract for endTime:", endTimeError);
+    }
+  }, [isEndTimeError, endTimeError]);
 
   // Get Balance
   const { data: presaletBalanceData, refetch: refetchBalance } = useBalance({
