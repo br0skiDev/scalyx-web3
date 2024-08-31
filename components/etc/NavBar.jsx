@@ -29,7 +29,7 @@ const NavBar = () => {
         </div>
       </Link>
 
-      <div className="flex space-x-2">
+      <div className="flex space-x-2 z-50">
         <ConnectWalletButton />
 
         <div className="flex">

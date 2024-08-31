@@ -133,10 +133,8 @@ const PaymentCard = () => {
       }
     };
 
-    // Initial update
     updateRemainingTime();
 
-    // Set up interval only if we successfully fetched the end time
     let timer;
     if (endTime) {
       timer = setInterval(updateRemainingTime, 60000); // Update every minute
@@ -148,13 +146,6 @@ const PaymentCard = () => {
       if (timer) clearInterval(timer);
     };
   }, [refetchEndTime, endTime]);
-
-  // Additional useEffect for logging
-  useEffect(() => {
-    if (isEndTimeError) {
-      console.error("Error in useReadContract for endTime:", endTimeError);
-    }
-  }, [isEndTimeError, endTimeError]);
 
   // Get Balance
   const { data: presaletBalanceData, refetch: refetchBalance } = useBalance({
