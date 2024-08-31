@@ -87,34 +87,46 @@ const PaymentCard = () => {
   };
 
   // Presale Timer
-  const { data: endTime } = useReadContract({
+  const { data: endTime, refetch: refetchEndTime } = useReadContract({
     address: presaleAddress,
     abi: abi,
     functionName: "endTime",
   });
 
   useEffect(() => {
-    if (endTime) {
-      const updateRemainingTime = () => {
-        const now = Math.floor(Date.now() / 1000);
-        const timeLeft = Number(endTime) - now;
-        if (timeLeft <= 0) {
-          setRemainingTime("Presale ended");
-          setPresaleState(false);
+    const updateRemainingTime = async () => {
+      try {
+        // Refetch endTime to get the most up-to-date data
+        const { data: updatedEndTime } = await refetchEndTime();
+
+        if (updatedEndTime) {
+          const now = Math.floor(Date.now() / 1000);
+          const timeLeft = Number(updatedEndTime) - now;
+
+          if (timeLeft <= 0) {
+            setRemainingTime("Presale ended");
+            setPresaleState(false);
+          } else {
+            const days = Math.floor(timeLeft / (24 * 60 * 60));
+            const hours = Math.floor((timeLeft % (24 * 60 * 60)) / (60 * 60));
+            const minutes = Math.floor((timeLeft % (60 * 60)) / 60);
+            setRemainingTime(`${days}d ${hours}h ${minutes}m left`);
+          }
         } else {
-          const days = Math.floor(timeLeft / (24 * 60 * 60));
-          const hours = Math.floor((timeLeft % (24 * 60 * 60)) / (60 * 60));
-          const minutes = Math.floor((timeLeft % (60 * 60)) / 60);
-          setRemainingTime(`${days}d ${hours}h ${minutes}m left`);
+          console.error("Unable to fetch end time");
+          setRemainingTime("Unable to fetch remaining time");
         }
-      };
+      } catch (error) {
+        console.error("Error updating remaining time:", error);
+        setRemainingTime("Error updating time");
+      }
+    };
 
-      updateRemainingTime();
-      const timer = setInterval(updateRemainingTime, 60000); // Update every minute
+    updateRemainingTime();
+    const timer = setInterval(updateRemainingTime, 60000); // Update every minute
 
-      return () => clearInterval(timer);
-    }
-  }, [endTime]);
+    return () => clearInterval(timer);
+  }, [refetchEndTime]);
 
   // Get Balance
   const { data: presaletBalanceData, refetch: refetchBalance } = useBalance({
