@@ -117,17 +117,31 @@ const PaymentCard = () => {
   }, [endTime]);
 
   // Get Balance
-  const { data: presaletBalanceData } = useBalance({
+  const { data: presaletBalanceData, refetch: refetchBalance } = useBalance({
     address: presaleAddress,
   });
 
-  const seeBalance = () => {
-    if (presaletBalanceData) {
-      const balanceInEth = formatEther(presaletBalanceData.value);
-      setPresaleBalance(balanceInEth);
-      alert(`Contract Balance: ${balanceInEth} ETH`);
-    } else {
-      console.log("Unable to fetch presale balance");
+  const seeBalance = async () => {
+    try {
+      const { data: updatedBalance } = await refetchBalance();
+
+      if (updatedBalance) {
+        const balanceInEth = formatEther(updatedBalance.value);
+        setPresaleBalance(balanceInEth);
+        toast({
+          title: "Contract Balance",
+          description: `${balanceInEth} ETH`,
+        });
+      } else {
+        throw new Error("Unable to fetch presale balance");
+      }
+    } catch (error) {
+      console.error("Error fetching balance:", error);
+      toast({
+        title: "Error",
+        description: "Unable to fetch presale balance",
+        variant: "destructive",
+      });
     }
   };
 
