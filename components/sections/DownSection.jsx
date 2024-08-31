@@ -17,18 +17,24 @@ const DownSection = () => {
         <SocialsBottom />
       </div>
 
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-10 bg-background flex items-center justify-center space-x-4 py-3 rounded-xl">
-        <Link href={"/"} className="font-bold hover:scale-110">
-          Terms
-        </Link>
-        <Link href={"/"} className="font-bold hover:scale-110">
-          Privacy
-        </Link>
-        <Link href={"/"} className="font-bold hover:scale-110">
-          Cookies
-        </Link>
-      </div>
+      <Footer />
     </section>
+  );
+};
+
+const Footer = () => {
+  return (
+    <div className="absolute w-fit md:w-[500px] bottom-4 left-1/2 -translate-x-1/2 px-10 bg-background flex items-center justify-center space-x-4 py-3 rounded-xl">
+      <Link href={"/"} className="font-bold hover:scale-110">
+        Terms
+      </Link>
+      <Link href={"/"} className="font-bold hover:scale-110">
+        Privacy
+      </Link>
+      <Link href={"/"} className="font-bold hover:scale-110">
+        Cookies
+      </Link>
+    </div>
   );
 };
 
